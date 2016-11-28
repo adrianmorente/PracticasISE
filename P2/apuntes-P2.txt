@@ -1,0 +1,127 @@
+Cosas básicas para un servidor web:
+
+L inux
+A pache
+M ySQL / MariaDB
+P HP
+
+____
+
+Antes de modificar un archivo de configuración...
+
+  cp nombre nombre.bk
+  nano <nombre>
+
+____
+
+Gestores de paquetes:
+
+  CentOS: yum
+  Deb: apt (-> dpkg)
+
+____
+
+1.
+  a) sudo yum install -y <nombre_paquete>
+    ____ yum search ___
+    yum remove
+
+  b) proxy=http://stargate.ugr.es:3128
+  # The proxy server - proxy server:port number
+  proxy=http://mycache.mydomain.com:3128
+  # The account details for yum connections
+  proxy_username=yum-user
+  proxy_password=qwerty
+
+  c) Hay varias formas, y todas se mantienen por temas de retrocompatibilidad.
+  · Hay que añadir en /etc/yum.repos.d un fichero ___.rep, actualizar y utilizarlo.
+  · yum-config-manager --add-repo <url>
+
+
+2.
+  a) sudo apt-get install -y <nombre_paquete>
+    sudo apt-cache search
+    sudo apt-get remove <nombre_paquete>
+
+  b) http://askubuntu.com/questions/158557/setting-proxy-from-terminal
+
+  c) <url> >> /etc/apt/sources.list
+
+
+3.
+  a) ufw enable
+    -> HTTP 80  -> HTTP (v4)
+                -> HTTP (v6)
+    -> SSH  22  -> SSH (v4)
+                -> SSH (v6)
+
+  sudo ufw allow <port> /[tcp|udp]
+
+  b) systemctl enable firewalld
+    [systemctl status firewalld]
+
+    su
+      firewall-cmd --add-port=22/tcp
+      firewall-cmd --list-ports
+      firewall-cmd --remove-port=22/tcp
+      firewall-cmd --add-service=http
+      firewall-cmd --list-services
+
+  c) nmap localhost
+
+
+4. telnet vs ssh
+  - telnet es más antiguo, sencillo y que funcione, pero es menos seguro y sin
+  cifrado con respecto a ssh.
+
+5.
+  a) sirve para ejecutar comandos con interfaz gráfica en el núcleo del cliente,
+  lo que libera mucha carga de la red al no transferir toda la interfaz y solo
+  cargarla en local.
+
+6.
+  ssh-keygen -t RSA -b 4096
+  (file/home/adri/.ssh/id_rsa):
+  ls -al .ssh
+  ssh-copy-id adricentos@us14.04-p1
+
+7.
+  en /etc/ssh/sshd_config
+    PermitRootLogin (yes)/(no)/(with-outpassword)
+  a la hora de asignar puertos no protegidos, que sean >1024.
+  (se cambia en el archivo de arriba, atributo Port)
+
+8.
+  sí, hay que reiniciar los servicios.
+
+9.
+  Ubuntu: sudo apt-get install -y lamp-server^
+  CentOS: sudo yum install httpd
+          sudo yum install php
+          sudo yum install mariadb-server
+
+11. El uso de patch implica modificar el código a partir de patch, y después
+por otro lado recompilar el código, etc.
+  nano ejemplo1.txt -> (contenido random)
+  cp ejemplo1.txt ejemplo2.txt
+  nano ejemplo2.txt -> (cambio contenido random)
+  diff ejemplo1.txt ejemplo2.txt <- (linea modificada)
+  diff ejemplo1.txt ejemplo2.txt > parche.patch
+  patch ejemplo1.txt parche.patch
+
+  --> EJ PROPUESTO: Crear HolaMundo con uno/dos error(es) intencionado(s) (bucle infinito).
+      Crear un HolaMundo fixed
+      -> Diff/patch
+      -> Recompilar
+
+13. Para pasar de 8MB a 25, se tocan dos parámetros. Para cambiar de 8MB a +25,
+  se tocan 3.
+
+
+15. EJ PROPUESTO: vamos a utilizar 'sed' para procesar el fichero sshd_config.
+  Buscamos la cadena 'Port' __X__ y sustituimos el número que lo acompaña por
+  22222.
+
+  OTRO: con 'awk' buscamos el puerto _
+    -> si lo encontramos -> pantalla
+    -> si no, -> aviso mensaje.

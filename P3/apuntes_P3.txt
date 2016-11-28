@@ -1,0 +1,44 @@
+los logs de cada servicio SUELEN estar bajo el directorio /etc/<servicio>.../
+
+1.
+  a) en el log de apt: /var/log/apt/history.log. encontramos también un term.log que contiene
+    el resultado de cada una de las instalaciones/modificaciones (ya sean exitosas o con error).
+  b) son archivos de log comprimidos. podemos visualizarlos con:
+    -> gunzip -c <archivo>.gz
+    -> zcat -f <archivo> (comprimido, o no)
+
+con 'logrotate' podemos configurar mil historias y parámetros para controlar los logs (tamaño
+base para compresión, etc).
+
+opc 1.
+  sudo fdisk /dev/sdb
+  sudo mdadm --manage --add /dev/md0 /dev/sdb1
+2.
+  cat /var/spool/cron/crontabs/adri pero a través del programa crontab
+
+  · nano script_seguridad.sh{
+    date=$(date '+%Y%m%d_%H%M%S')
+    mkdir -p /seguridad/$date_time
+    cp -r ~/codigo/* ~/seguridad/$date_time
+  }
+  · chmod u+x script_seguridad.sh
+  · cd codigo
+  · nano codigo1.txt{
+    ejemplo
+  }
+  · cp codigo1.txt codigo2.txt
+  · cp codigo1.txt codigo3.txt
+  · crontab -e {*/2 * * * * ~./script_seguridad.sh}
+
+3.
+  conectamos el pendrive, lo activamos en 'Dispositivos' y con 'dmesg' en Ubuntu comentamos
+  los resultados: capacidad, marca, número de serie, permisos, etc
+
+__ZABBIX_AGENT__
+
+    *Puerto Servidor 10051 / Agente 10050*
+
+  ServerIP=<ip_servidor>
+  ServerActive=<ip_servidor>
+  HostName=ZabbixAgent01
+  ListenIP=<ip_cliente>

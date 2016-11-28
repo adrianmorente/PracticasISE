@@ -1,0 +1,39 @@
+--- APUNTES ISE ---
+
+Seminario 2:
+
+  Para cuestión 3, usar la documentación oficial de la web de Microsoft.
+
+  Windows Server 2016 nano: versión que permite instalar todo el servidor
+  simplemente desde línea de comandos, ahorrando tiempo y espacio en el
+  proceso.
+
+  Cuando hablemos de RAIDs, mencionar siempre rendimiento y precio de la
+  configuración que estemos analizando.
+
+    LVM:
+      - LV: logical volume. es pseudo-equivalente a una partición.
+      - LVG: logical volume group. pseudo-equivalente a un HDD.
+      - PV: physical volume. almacenamiento HDD.
+
+      Separar todo en particiones (/, /home, /boot y /swap) permite salvar los
+      datos en todo caso. Dichas particiones constituyen el grupo de volúmenes
+      lógicos.
+      Si aun así me quedo sin espacio, tendré que añadir un nuevo almacenamiento
+      (PV) y añadirlo al grupo de volúmenes lógicos.
+
+      Un PV puede ser por ejemplo un RAID, cuyos almacenamientos juntos formarán
+      un conjunto de volúmenes lógicos
+
+Existen varios estados para un RAID: Active, Degraded y Inactive.
+El bug hace que a pesar de tener un RAID en estado Degraded, el sistema lo marca
+como Inactive, por lo tanto no nos deja arrancar.
+
+Si en /proc/mdstat aparece en estado Inactive, con 'mdadm -R /dev/md0' lo arreglamos
+y ya podemos arrancar.
+
+Forma de restaurar el disco eliminado: sudo mdadm --manage --add /dev/md0 /dev/sda1
+Para comprobar progreso del recovery: cat /proc/mdstat otra vez.
+
+emacs y bash comparten atajos de teclado, ya que dentro del editor emacs está presente
+el intérprete bash para compilado/ejecución,etc.

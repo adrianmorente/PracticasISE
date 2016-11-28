@@ -1,0 +1,9 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Escribir aqu\IeC {\'\i } el enunciado de la cuesti\IeC {\'o}n}{4}
+\contentsline {subsection}{\numberline {1.1}enunciado de una subcuesti\IeC {\'o}n}{4}
+\contentsline {section}{\numberline {2}Ejemplos de listas de elementos}{4}
+\contentsline {subsection}{\numberline {2.1}Ejemplo de c\IeC {\'o}mo usar listas de elementos (items) anidados}{4}
+\contentsline {subsection}{\numberline {2.2}Ejemplo de una lista numerada}{5}
+\contentsline {section}{\numberline {3}Incluyendo figuras en el texto}{5}
+\contentsline {section}{\numberline {4}Mostrando tablas}{6}
+\contentsline {section}{\numberline {5}Incluyendo las referencias}{7}
