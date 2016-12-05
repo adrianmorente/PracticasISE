@@ -1,0 +1,27 @@
+1.
+  NO HACER benchmarks de disco duro, ya que en virtualbox utilizamos un disco
+  dinámico virtual.
+
+2.
+  mirar ayuda del programa (man) y ver qué significan los parámetros del enunciado.
+  monitorizamos ejecuciones con esas opciones. lo normal será tener el servicio en
+  el host o en otra máquina virtual. podemos usar 'sar' para monitorizar entradas/
+  salidas, etc.
+
+3.
+  comparar prestaciones de las 3 VMs que tenemos. abriremos la misma página web
+  en las 3 máquinas.
+
+opt-1
+  gatling está hecho en Scala y se usa para estresar dispositivos. instalarlo y probar
+  los escenarios por defecto. (instalamos Scala y miramos su documentación oficial _sin
+  copiar sus párrafos tal cual_). miramos de qué va gatling y lo explicamos bien.
+
+4.
+  instalar jmeter y seguir tutorial para el mismo experimento que con gatling.
+
+5.
+  programarse el propio benchmark de la NASA:
+  - elegir qué componente vamos a testear
+  - elegir lenguaje
+  - elegir tiempo de respuesta, productividad, o lo que sea.
