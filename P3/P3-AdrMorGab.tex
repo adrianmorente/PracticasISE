@@ -94,6 +94,14 @@ Pasemos a ejecutar el comando \emph{dmesg | tail} para mostrar parte de esta inf
 \end{figure}
 
 \section{Ejecute el monitor de ``System performance'' y muestre el resultado. Incluya capturas de pantalla comentando la información que aparece.}
+Para responder a esta pregunta nos situaremos en varios estados del sistema operativo: ejecutaremos dos análisis, uno con el sistema sin hacer \textit{casi} nada; y otro con el sistema reproduciendo audio a través de una conocida plataforma de vídeo en streaming mediante el navegador \emph{Chrome}.
+Una vez ejecutado el comando \emph{perfmon} desde PowerShell, en el panel de la izquierda iniciaremos una monitorización de \textbf{System Performance} tal y como se especifica en el guión. Tras un minuto de espera al análisis, obtenemos lo siguiente (se muestra una parte del complejo análisis completo):
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{perfmon-1}
+	\caption{Informe de rendimiento del sistema con Perfmon. - Adrián Morente Gabaldón [06/12/2016]}
+	\label{figura9}
+\end{figure}
 
 \section{Cree un recopilador de datos definido por el usuario (modo avanzado) que incluya tanto el contador de rendimiento como los datos de seguimiento: 1) Todos los referentes al procesador, al proceso y al servicio web. 2) Intervalo de muestra 15 segundos. 3) Almacene el resultado en el directorio Escritorio/logs. 4) Incluya las capturas de pantalla de cada paso.}
 
