@@ -28,6 +28,11 @@
 
 \tableofcontents % para generar el índice de contenidos
 
+<<<<<<< HEAD
+\newpage
+
+=======
+>>>>>>> 811a379097662484cf19110ecf0e1eb1ace5b0ae
 \listoffigures
 
 \listoftables
@@ -96,15 +101,140 @@ Pasemos a ejecutar el comando \emph{dmesg | tail} para mostrar parte de esta inf
 \section{Cree un recopilador de datos definido por el usuario (modo avanzado) que incluya tanto el contador de rendimiento como los datos de seguimiento: 1) Todos los referentes al procesador, al proceso y al servicio web. 2) Intervalo de muestra 15 segundos. 3) Almacene el resultado en el directorio Escritorio/logs. 4) Incluya las capturas de pantalla de cada paso.}
 
 \section{Visite la web del proyecto y acceda a la demo que proporcionan (http://demo.munin-monitoring.org/) donde se muestra cómo monitorizan un servidor. Monitorice varios parámetros y haga capturas de pantalla de lo que está mostrando comentando qué observa.}
+<<<<<<< HEAD
+Según vemos en la documentación oficial de Munin, su nombre proviene de la mitología nórdica y significa \emph{memoria} \cite{munin-info}. Es una herramienta de monitorización en red, muy útil para examinar el rendimiento de los recursos y comprobar a qué se deben los \emph{bajones} puntuales de rendimiento. Además, sigue el estilo \textbf{``plug \& play''}, ya que con su instalación y muy poca configuración se puede empezar a funcionar rápidamente. \\
+Si queremos instalarnos el servicio Munin en nuestra máquina con Ubuntu Server podemos seguir fácilmente la guía descrita en su web oficial \cite{munin-install}, en la que especifican que ambas partes (el modo ``master'' de administración y el modo ``nodo'') se encuentran en los repositorios oficiales de Debian (y por tanto de Ubuntu). \\
+Pasemos a ver la versión ``demo'' de Munin en el enlace propuesto en el enunciado. Nada más acceder, nos encontramos con tres grupos:
+\begin{itemize}
+	\item \textbf{munin-monitoring.org}: será el que utilicemos en este caso, y a su vez comprende cuatro grupos:
+	\begin{itemize}
+		\item \emph{buildd.munin-monitoring.org}: dentro de éste, encontramos la clasificacion de cuatro recursos: \emph{disk} (datos del disco, datos de entrada-salida, latencia, etc), \emph{processes} (procesos de usuario, número de hebras, prioridad de éstas, etc), \emph{system} (uso de la CPU, uso de la tabla de descriptores de archivo, interrupciones, etc), y \emph{other} (que está en blanco). Comentaremos alguno de ellos más adelante.
+		\item \emph{demo.munin-monitoring.org}: en este grupo encontramos muchos más recursos descritos, entre los que podemos ver detalladas las diferentes interfaces de red, memoria, disco, procesos e incluso contribuciones a \emph{GitHub} y mantenimiento de webs ofrecidas por nuestro servidor, entre otras. Sin embargo, no todos ellos están descritos y la mayoría aparecen en blanco. Comentaremos alguno más adelante.
+		\item \emph{pi.munin-monitoring.org}: el recurso está en blanco, por lo que la demostración no nos deja profundizar más.
+		\item \emph{www.munin-monitoring.org}:el recurso está en blanco, por lo que la demostración no nos deja profundizar más.
+	\end{itemize}
+	\item \textbf{vm}: solo comprende al recurso \textbf{bridge.vm} y está vacío. Entendemos que simula una conexión \emph{Bridge} entre recursos, pero la demostración no nos deja investigar más.
+	\item \textbf{vpn}: solo comprende al recurso \textbf{nas.vpn} y está vacío. Entendemos que simula una conexión de red privada virtual (\emph{VPN}), pero la demostración no nos deja investigar más.
+\end{itemize}
+Para terminar, comentemos algunos de los recursos mencionados arriba. Empecemos con uno de los incluidos en el primer grupo (\emph{munin-monitoring.org}). A su vez, está clasificado dentro de la primera agrupación de éste: \emph{buildd.munin-monitoring.org}, en el apartado de ``procesos''. Se trata del \textbf{Fork rate}, que podemos traducir (según vimos en la asignatura de Sistemas Operativos) por el promedio de creación de procesos por segundo en el sistema. En el margen izquierdo contemplamos este promedio, mientras que en el margen horizontal inferior vemos su transcurso en el tiempo. La demostración también nos aporta la fecha y hora de dicha captura:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{munin-forkrate}
+	\caption{Demostración del número de creación de procesos por segundo (Demostración de Munin). - Adrián Morente Gabaldón [06/12/2016]}
+	\label{figura5}
+\end{figure}
+Y por último, veamos uno de los recursos incluidos en el grupo \emph{munin-monitoring.org} clasificado en \emph{demo.munin-monitoring.com}. Se trata de uno de los monitores de interfaces de red, y se trata de \textbf{Interface 1sec stats for eth0}. Este recurso vigila \textbf{cada segundo} la entrada/salida de datos (en bytes, en este caso) a través de la interfaz Ethernet del sistema. En el margen izquierdo vemos el número de K bytes manejados, y en el margen horizontal inferior su transcurso en el tiempo. También podemos ver la fecha y hora de dicho análisis:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.3]{munin-network}
+	\caption{Demostración del manejo de bytes por segundo en la interfaz de red Ethernet (Demostración de Munin). - Adrián Morente Gabaldón [06/12/2016]}
+	\label{figura6}
+\end{figure}
+=======
+>>>>>>> 811a379097662484cf19110ecf0e1eb1ace5b0ae
 
 \section{Escriba un breve resumen sobre alguno de los artículos donde se muestra el uso de strace o busque otro y coméntelo.}
 En mi caso, haré un análisis del segundo artículo ofrecido en la práctica, proveniente del blog oficial de \textbf{SoftLayer, una compañía de IBM} \cite{softlayer-strace}. \\
 Para empezar, plantean una descripción que nos sitúa en el marco de uso de la herramienta \emph{strace}, haciéndonos ver que su utilización va orientada a los administradores de sistemas (en este caso, nosotros); y que a través de su ejecución podemos analizar y corregir los errores de los servicios que ofrecemos mostrándonos las llamadas al sistema y las señales resultantes de la ejecución de dichos servicios. Gracias a esto, a través de los archivos \emph{.log} podemos ver cuál de los parámetros no están bien configurados o qué paquetes están fallando de alguna forma. \\
+<<<<<<< HEAD
+Para utilizar esta herramienta, solo tendremos que añadir el comando ``strace'' delante del comando o programa que queremos ejecutar, lo que provocará la impresión de las llamadas al sistema y las señales realizadas por la ejecución de éste. Cabe mencionar que deberemos tener permisos de usuario \emph{root} para su utilización. \\
+Un caso de uso real en el que podemos ilustrar sobre la utilidad de \emph{strace} es a la hora de descubrir dónde están los archivos \emph{.log} de uno de los servicios que ofrece nuestro sistema. Por ejemplo, en el artículo estudiado se propone el siguiente ejemplo, que consiste en localizar los ficheros \emph{.log} correspondientes al servicio Apache, a partir de buscar los comandos \textbf{open} que tratan de abrirlos durante su ejecución:
+\begin{lstlisting}[language=bash]
+	strace -Ff -o output.txt -e open /etc/init.d/httpd restart
+\end{lstlisting}
+Esta línea de comandos se traduce, componente a componente, en lo siguiente:
+\begin{itemize}
+	\item \textbf{strace}: como ya sabemos, esto hará la máquina imprimir las llamadas al sistema;
+	\item \textbf{-Ff}: esta opción fuerza a buscar los ficheros siguiendo todas las rutas y directorios;
+	\item \textbf{-o output.txt}: esta opción redirigirá la salida al fichero pasado como parámetro, \emph{output.txt} en este caso;
+	\item \textbf{-e open}: filtrará todas las llamadas al sistema que contengan la cadena pasada como parámetro; ya que queremos buscar la ruta de los archivos \emph{.log} que el sistema intenta abrir;
+	\item \textbf{/etc/init.d/httpd restart}: esta orden ya la hemos usado en la práctica anterior, y sabemos que reinicia el servicio Apache; lo que provocará la búsqueda/apertura de los ficheros que buscamos.
+\end{itemize}
+Tras ejecutar dicha orden, abriremos el archivo filtrando por la palabra \textbf{log}, y obtendremos el siguiente contenido:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{strace}
+	\caption{Salida filtrada de la ejecución de la orden con strace para la búsqueda de los \emph{logs} de Apache. - SoftLayer Blog [05/12/2016]}
+	\label{figura4}
+\end{figure}
+Así solo veremos las líneas que pretenden abrir un fichero; y podemos observar que todas siguen el mismo patrón: 
+\begin{verbatim}
+	... open(...) = <número>
+\end{verbatim}
+El número asignado al final determina el número de operación de \emph{strace}, y será el identificador que utilice para trabajar con ese fichero. Por ejemplo, vemos que en una de las líneas intenta abrir el fichero \emph{/etc/httpd/logs/access\_log} y le asigna el identificador número 12; pues eso significará que estará utilizando ese fichero si por ejemplo encontramos una orden del tipo \textbf{read(12, ...<texto>) = XX}. Esta última se corresponde con una orden de lectura del fichero, que lo carga en memoria y le asigna tras el símbolo '=' el número de caracteres totales (XX genérico, en este caso). \\
+Resumiendo, a través de la ejecución de \emph{strace} y del filtrado de sus mensajes de salida, podemos determinar dónde se encuentran los archivos correspondientes a cualquier fichero que busquemos. Además, la salida nos ilustra con números qué ficheros se abreen/leen y cuándo.
+
+
+\section{Escriba un script en Python o PHP y analice su comportamiento usando el profiler presentado.}
+En el enlace aportado por el enunciado, que dirige a la web oficial del lenguaje Python, encontramos tres tipos de profilers para dicho lenguaje:
+\begin{itemize}
+	\item \textbf{cProfile}: recomendado para la mayoría de usuarios, es escalable y apto para programas de ejecución extensa. Está escrito en C.
+	\item \textbf{profile}: similar a \emph{cProfile} pero desarrollado en Python. A priori, su uso debería ser más sencillo para tareas simples.
+	\item \textbf{hotshot}: se trata de un módulo experimental en C, el cual limita el tiempo de profiling a pesar de influir negativamente en el tiempo de procesamiento del resto de tareas. Está obsoleto y sin mantenimiento.	
+\end{itemize}
+Para este caso, utilizaremos el módulo \emph{cProfile}, el cual se puede incluir directamente en el código de la siguiente forma:
+\begin{verbatim}
+	import cProfile
+	import re
+	cProfile.run('re.compile("argumentos")')
+\end{verbatim}
+Sin embargo, esta opción me parece más liosa a nivel de código por lo que usaremos otra alternativa, que consistente en utilizar \emph{cProfile} a modo de script que ejecuta a otro. Es decir:
+\begin{verbatim}
+	python -m cProfile [-o fichero_salida] [-s orden_según parámetros] script.py
+\end{verbatim}
+Para empezar, veamos el código de nuestro simple script. Consiste en la definición de una clase con dos métodos simples. El tipo de objeto de la clase contendrá una cadena de texto y un número. El primer método imprime esta cadena carácter a carácter; mientras que el segundo método realiza unos cálculos algo más complejos con números para extender un poco el tiempo de ejecución del programa.
+\begin{verbatim}
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""script.py"""
+
+class EjemploTexto:
+
+  def __init__(self, texto, numero):
+    self.texto = texto
+    self.numero = numero
+
+  def escribir(self):
+    for i in self.texto:
+    print("Dame una %s" % (i))
+
+  def contar(self):
+    for i in range(10000):
+      for j in range(10000):
+        self.numero += (i+j)
+
+  def imprimir(self):
+    print("Tengo un numero :) --> %s" % (self.numero))
+
+
+ejemplo = EjemploTexto("PRACTICAS ISE", 81)
+
+ejemplo.escribir()
+ejemplo.imprimir()
+ejemplo.contar()
+ejemplo.imprimir()
+\end{verbatim}
+Ahora pasamos a ejecutar el script junto con el profiler, de la forma arriba mencionada, y obtendremos el siguiente resultado, que comentaremos a continuación:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{python-cprofile}
+	\caption{Ejecución del script de python junto con su profiler. - Adrián Morente Gabaldón [06/12/2016]}
+	\label{figura7}
+\end{figure}
+Como podemos observar, el script tarda casi 9 segundos en ejecutarse (debido a los cálculos arriba mencionados), durante los que ejecuta 10.009 llamadas a funciones. En la tabla mostrada tras su ejecución, vemos el número de veces que se llama a cada una de éstas, siendo en todas 1 excepto en \emph{imprimir()} y \emph{range(...)}; esta última se llama tantas veces debido a los dos bucles anidados. Pasemos a ejecutar otra vez el script pero ordenando su salida de forma descendente con el tiempo de cómputo de cada una de las funciones. Esto lo haremos añadiendo \textbf{-s cumtime} al comando:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{python-cumtime}
+	\caption{Ejecución del script de python junto con su profiler, ordenado según tiempo acumulativo de cada función. - Adrián Morente Gabaldón [06/12/2016]}
+	\label{figura8}
+\end{figure}
+=======
 
 
 descartar que sea una herramienta para programadores, ya que está destinada a los administradores de sistemas (en este caso, nosotros); dado que su utilización va orientada a la detección y solución de errores en la ejecución de los servicios que ofrecemos en nuestro sistema. Para poder mostrarnos cuál de nuestros programas está fallando, o qué está realizando cada uno de ellos, esta herramienta nos muestra las llamadas y las señales del sistema resultantes de dichos programas.
 
 \section{Escriba un script en Python o PHP y analice su comportamiento usando el profiler presentado.}
+>>>>>>> 811a379097662484cf19110ecf0e1eb1ace5b0ae
 
 \section{Acceda a la consola MySQL (o a través de phpMyAdmin) y muestre el resultado de mostrar el ``profile'' de una consulta (la creación de la BD y la consulta la puede hacer libremente).}
 
