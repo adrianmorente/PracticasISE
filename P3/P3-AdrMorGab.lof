@@ -1,0 +1,9 @@
+\select@language {spanish}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Consulta de los paquetes instalados con APT en el directorio /var/log/apt. - Adri\IeC {\'a}n Morente Gabald\IeC {\'o}n [04/12/2016]}}{4}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Contenido del archivo \emph {term.log} y los resultados de la ejecuci\IeC {\'o}n de APT. - Adri\IeC {\'a}n Morente Gabald\IeC {\'o}n [04/12/2016]}}{5}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Muestra de los resultados recopilados del kernel por \emph {dmesg}. - Adri\IeC {\'a}n Morente Gabald\IeC {\'o}n [04/12/2016]}}{7}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Demostraci\IeC {\'o}n del n\IeC {\'u}mero de creaci\IeC {\'o}n de procesos por segundo (Demostraci\IeC {\'o}n de Munin). - Adri\IeC {\'a}n Morente Gabald\IeC {\'o}n [06/12/2016]}}{9}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Demostraci\IeC {\'o}n del manejo de bytes por segundo en la interfaz de red Ethernet (Demostraci\IeC {\'o}n de Munin). - Adri\IeC {\'a}n Morente Gabald\IeC {\'o}n [06/12/2016]}}{9}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Salida filtrada de la ejecuci\IeC {\'o}n de la orden con strace para la b\IeC {\'u}squeda de los \emph {logs} de Apache. - SoftLayer Blog [05/12/2016]}}{11}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Ejecuci\IeC {\'o}n del script de python junto con su profiler. - Adri\IeC {\'a}n Morente Gabald\IeC {\'o}n [06/12/2016]}}{13}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Ejecuci\IeC {\'o}n del script de python junto con su profiler, ordenado seg\IeC {\'u}n tiempo acumulativo de cada funci\IeC {\'o}n. - Adri\IeC {\'a}n Morente Gabald\IeC {\'o}n [06/12/2016]}}{13}
