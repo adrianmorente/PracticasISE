@@ -128,6 +128,29 @@ El primer paso será poner nombre al recopilador y elegir el modo de trabajo: av
 	\caption{Elección del modo de creación del recopilador de datos de Perfmon. Adrián Morente Gabaldón [06/12/2016]}
 	\label{figura12}
 \end{figure}
+En el siguiente paso marcaremos las opciones de \emph{Contador de rendimiento} y \emph{Datos de seguimiento} tal y como manda el enunciado, y pondremos el intervalo de muestra en 15 segundos; y a continuación podremos elegir los parámetros del sistema cuyos datos queremos recopilar:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{recop2}
+	\caption{Elección de los recursos a monitorizar durante la recopilación de datos con Perfmon. Adrián Morente Gabaldón [06/12/2016]}
+	\label{figura13}
+\end{figure}
+Como pide el ejercicio, agregaremos todas las instancias de los contadores \emph{Procesador}, \emph{Proceso} y \emph{Servicio web}. Y para terminar, elegiremos la ruta de destino de los ficheros \emph{log} que se vayan creando durante la recopilación, que será de la siguiente forma:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{recop3}
+	\caption{Elección de la ruta de almacenamiento de los logs de nuestro recopilador de datos de Perfmon. Adrián Morente Gabaldón [06/12/2016]}
+	\label{figura14}
+\end{figure}
+Llegados aquí, ya deberíamos tener nuestro recopilador completamente configurado. Ahora podemos iniciar el primer análisis, que liberará una muestra cada 15 segundos, y que podemos detener en cualquier momento para observar dicha muestra. \\
+Cabe decir, aun en contra de Perfmon, que un análisis con tantos contadores se vuelve prácticamente inmanejable a la hora de representar gráficamente cada uno de los recursos, ya que para mostrar/ocultar cada uno de ellos, tenemos que marcarlos o desmarcarlos manualmente uno a uno. Si no lo hacemos, tendremos una gráfica con muchas líneas superpuestas y de colores confusos. Y para muestra, un botón:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.35]{recop4}
+	\caption{Representación gráfica de nuestra recopilación de datos con Perfmon. Adrián Morente Gabaldón [06/12/2016]}
+	\label{figura15}
+\end{figure}
+Para terminar, destaco también que todos los contadores del Servicio web se corresponden con la línea roja sobre el eje X, ya que nuestro servidor web no tiene actividad ninguna.
 
 \section{Visite la web del proyecto y acceda a la demo que proporcionan (http://demo.munin-monitoring.org/) donde se muestra cómo monitorizan un servidor. Monitorice varios parámetros y haga capturas de pantalla de lo que está mostrando comentando qué observa.}
 Según vemos en la documentación oficial de Munin, su nombre proviene de la mitología nórdica y significa \emph{memoria} \cite{munin-info}. Es una herramienta de monitorización en red, muy útil para examinar el rendimiento de los recursos y comprobar a qué se deben los \emph{bajones} puntuales de rendimiento. Además, sigue el estilo \textbf{``plug \& play''}, ya que con su instalación y muy poca configuración se puede empezar a funcionar rápidamente. \\
