@@ -120,6 +120,14 @@ Pasemos ahora al otro caso práctico en el que ocupamos parte de la memoria RAM 
 Aunque seguimos sin hacer un gran trabajo de cómputo para la CPU, vemos como ha subido levemente su actividad, estando su carga comprendida ahora entre el 5\% y el 10\%. Además, en el apartado de \emph{Memoria} vemos que el porcentaje de uso ha crecido hasta el 60\%, y que el proceso más frecuente ahora es el navegador antes mencionado.
 
 \section{Cree un recopilador de datos definido por el usuario (modo avanzado) que incluya tanto el contador de rendimiento como los datos de seguimiento: 1) Todos los referentes al procesador, al proceso y al servicio web. 2) Intervalo de muestra 15 segundos. 3) Almacene el resultado en el directorio Escritorio/logs. 4) Incluya las capturas de pantalla de cada paso.}
+Si los recopiladores de datos creados por el sistema tienen más o menos parámetros de los que deseamos utilizar, siempre podemos definir el nuestro propio. La configuración de éste es, como es habitual en el sistema operativo de Microsoft, extremadamente sencillo; ya que marcando y desmarcando algunas casillas y pulsando en \emph{Siguiente} varias veces podemos tener un recopilador completamente funcional en cuestión de minutos. \\
+El primer paso será poner nombre al recopilador y elegir el modo de trabajo: avanzado, en nuestro caso:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{recop1}
+	\caption{Elección del modo de creación del recopilador de datos de Perfmon. Adrián Morente Gabaldón [06/12/2016]}
+	\label{figura12}
+\end{figure}
 
 \section{Visite la web del proyecto y acceda a la demo que proporcionan (http://demo.munin-monitoring.org/) donde se muestra cómo monitorizan un servidor. Monitorice varios parámetros y haga capturas de pantalla de lo que está mostrando comentando qué observa.}
 Según vemos en la documentación oficial de Munin, su nombre proviene de la mitología nórdica y significa \emph{memoria} \cite{munin-info}. Es una herramienta de monitorización en red, muy útil para examinar el rendimiento de los recursos y comprobar a qué se deben los \emph{bajones} puntuales de rendimiento. Además, sigue el estilo \textbf{``plug \& play''}, ya que con su instalación y muy poca configuración se puede empezar a funcionar rápidamente. \\
