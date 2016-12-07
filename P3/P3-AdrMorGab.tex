@@ -143,7 +143,16 @@ Como pide el ejercicio, agregaremos todas las instancias de los contadores \emph
 	\label{figura14}
 \end{figure}
 Llegados aquí, ya deberíamos tener nuestro recopilador completamente configurado. Ahora podemos iniciar el primer análisis, que liberará una muestra cada 15 segundos, y que podemos detener en cualquier momento para observar dicha muestra. \\
-Cabe decir, aun en contra de Perfmon, que un análisis con tantos contadores se vuelve prácticamente inmanejable a la hora de representar gráficamente cada uno de los recursos, ya que para mostrar/ocultar cada uno de ellos, tenemos que marcarlos o desmarcarlos manualmente uno a uno. Si no lo hacemos, tendremos una gráfica con muchas líneas superpuestas y de colores confusos. Y para muestra, un botón:
+Entre lo que nos encontramos a continuación podemos destacar los siguientes elementos:
+\begin{itemize}
+	\item A la izquierda encontramos una columna con una \emph{\textbf{checkbox}} por cada contador, con las que podemos mostrar u ocultar la línea de la gráfica correspondiente a dicho contador.
+	\item El \textbf{color} con el que identificamos gráficamente el contador.
+	\item La \textbf{escala} de cada contador (suelen estar en 1 o 10).
+	\item El \textbf{nombre} descriptivo o identificador del contador, el cual explica el rol de cada uno de éstos.
+	\item El \textbf{tipo de objeto}, que en nuestro caso se corresponderán con \emph{Procesador}, \emph{Proceso} y \emph{Servicio web}, ya que son los que decidimos usar.
+	\item El \textbf{equipo} en el que se monitoriza el recurso. En este caso el equipo es el mismo para todos los contadores, obviamente.
+\end{itemize}
+Cabe decir, aun en contra de Perfmon, que un análisis con tantos contadores se vuelve prácticamente inmanejable a la hora de representar gráficamente cada uno de los recursos, ya que para mostrar/ocultar cada uno de ellos, tenemos que marcarlos o desmarcarlos manualmente uno a uno. Si no lo hacemos, tendremos una gráfica con muchas líneas superpuestas y de colores confusos (ya que al tener muchas líneas, algunos colores coincidirán). Y para muestra, un botón:
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.35]{recop4}
