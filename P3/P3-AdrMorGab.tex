@@ -98,7 +98,7 @@ El monitor de rendimiento \emph{perfmon} es una herramienta potente para analiza
 Para empezar, nos plantearemos en el primer caso descrito; en el que el sistema operativo tan solo tendrá abierto (con sus correspondientes procesos de fondo) la aplicación \emph{perfmon}, de forma que obtengamos unos resultados livianos en el análisis. \\ Una vez ejecutado el comando \emph{perfmon} desde PowerShell, en el panel de la izquierda iniciaremos una monitorización de \textbf{System Performance} tal y como se especifica en el guión. Tras un minuto de espera al análisis, obtenemos lo siguiente (se muestra una parte del complejo análisis completo):
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.6]{perfmon-1}
+	\includegraphics[scale=0.35]{perfmon-1}
 	\caption{Primer informe de rendimiento del sistema con Perfmon. - Adrián Morente Gabaldón [06/12/2016]}
 	\label{figura9}
 \end{figure}
@@ -288,6 +288,24 @@ Como podemos observar, el script tarda casi 9 segundos en ejecutarse (debido a l
 Como podemos apreciar, prácticamente todo el tiempo de cómputo está monopolizado por los cálculos del método \emph{contar()}, siendo casi despreciable en el resto de funciones.
 
 \section{Acceda a la consola MySQL (o a través de phpMyAdmin) y muestre el resultado de mostrar el ``profile'' de una consulta (la creación de la BD y la consulta la puede hacer libremente).}
+Según vemos en la documentación oficial referenciada en el guión de la práctica \cite{mysql-profile}, podemos usar el comando \emph{SHOW PROFILE} para monitorizar muchos aspectos de la base de datos. Por ejemplo, según la opción incluida podemos observar el tiempo de CPU empleado en la búsqueda, la memoria RAM, el número de faltas de página, de cambios de contexto, etc. \\
+Para este caso práctico, usaremos las tablas ya existentes de prueba. Para empezar, la consulta al ``profiler'' más simple es \emph{SHOW PROFILE;}, lo que devuelve un resultado similar (según la tabla seleccionada) a esto:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{mysql1}
+	\caption{Muestra del monitor SHOW PROFILE de mySQL. - Adrián Morente Gabaldón [07/12/2016]}
+	\label{figura16}
+\end{figure}
+En esta salida podemos encontrar el tiempo empleado en lanzar la consulta, comprobar los permisos de ejecución, fin de la consulta, cerrado de tablas, etc. Como podemos ver, los tiempos son minúsculos, del orden de 0.00X milésimas, prácticamente; debido a que nuestras tablas disponen de muy pocos datos en ellas y se mueven con gran ligereza. \\
+Otro ejemplo interesante podría ser la consulta de las funciones utilizadas en la consulta, que vendrán descritas con el fichero de código del que provienen y el número de línea en que aparecen; acompañado por supuesto del tiempo que conlleva su ejecución (igual al antes mencionado):
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{mysql2}
+	\caption{Muestra del monitor SHOW PROFILE SOURCE de mySQL. - Adrián Morente Gabaldón [07/12/2016]}
+	\label{figura17}
+\end{figure}
+Como curiosidad, también probé el profiler con los cambios de contexto y el intercambio de memoria \emph{swap}, pero en ambos aparecen tablas con valor \textbf{0} en esos recursos, ya que no se utiliza ninguno de ellos. Uno: no se realizan cambios de contexto porque ejecutamos mySQL en modo root y en ese modo se ejecutan todas las consultas; y dos: la memoria \emph{swap} no se utiliza porque no realizamos una gran labor computacional y/o de intercambio y con la memoria principal (RAM) basta.
+ 
 
 
 \bibliography{citas}
