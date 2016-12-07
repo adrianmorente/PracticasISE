@@ -105,7 +105,7 @@ Para empezar, nos plantearemos en el primer caso descrito; en el que el sistema 
 Fácilmente podemos ver que el consumo de la CPU es muy bajo y cercano al 0-5\%, ya que como hemos dicho el sistema está en estado \emph{idle}. Además, vemos que el consumo de memoria RAM también es muy ajustado (se ocupa el 46\% de los 2GiB que tenemos asignados a la máquina virtual). Veamos ahora otra captura con respecto al análisis de la memoria principal:
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.6]{perfmon-2}
+	\includegraphics[scale=0.35]{perfmon-2}
 	\caption{Informe de ocupación de la memoria principal con Perfmon. - Adrián Morente Gabaldón [06/12/2016]}
 	\label{figura10}
 \end{figure}
@@ -113,12 +113,11 @@ En esta última imagen vemos algunos de los procesos que se están ejecutando en
 Pasemos ahora al otro caso práctico en el que ocupamos parte de la memoria RAM con el navegador Chrome reproduciendo contenido multimedia. Iniciaremos un nuevo análisis de rendimiento de la misma forma antes descrita, obteniendo lo siguiente:
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.6]{perfmon-3}
+	\includegraphics[scale=0.35]{perfmon-3}
 	\caption{Segundo informe de rendimiento del sistema con Perfmon. - Adrián Morente Gabaldón [06/12/2016]}
 	\label{figura11}
 \end{figure}
-Aunque seguimos sin hacer un gran trabajo de cómputo para la CPU, vemos como ha subido levemente su actividad, estando su carga comprendida ahora entre el 5\% y el 10\%
-
+Aunque seguimos sin hacer un gran trabajo de cómputo para la CPU, vemos como ha subido levemente su actividad, estando su carga comprendida ahora entre el 5\% y el 10\%. Además, en el apartado de \emph{Memoria} vemos que el porcentaje de uso ha crecido hasta el 60\%, y que el proceso más frecuente ahora es el navegador antes mencionado.
 
 \section{Cree un recopilador de datos definido por el usuario (modo avanzado) que incluya tanto el contador de rendimiento como los datos de seguimiento: 1) Todos los referentes al procesador, al proceso y al servicio web. 2) Intervalo de muestra 15 segundos. 3) Almacene el resultado en el directorio Escritorio/logs. 4) Incluya las capturas de pantalla de cada paso.}
 
