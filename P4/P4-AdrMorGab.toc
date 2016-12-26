@@ -1,0 +1,11 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}Seleccione, instale y ejecute uno, comente los resultados. \textbf {Atenci\IeC {\'o}n}: no es lo mismo un benchmark que una suite, instale un benchmark.}{5}{section.1}
+\contentsline {section}{\numberline {2}De los par\IeC {\'a}metros que le podemos pasar al comando \IeC {\textquestiondown }Qu\IeC {\'e} significa -c 5? \IeC {\textquestiondown }Y -n 100? Monitorice la ejecuci\IeC {\'o}n de ab contra alguna m\IeC {\'a}quina (cualquiera) \IeC {\textquestiondown }cu\IeC {\'a}ntas ``tareas'' crea ab en el cliente?}{7}{section.2}
+\contentsline {section}{\numberline {3}Ejecute ab contra las tres m\IeC {\'a}quinas virtuales (desde el SO anfitri\IeC {\'o}n a las m\IeC {\'a}quinas virtuales de la red local) una a una (arrancadas por separado). \IeC {\textquestiondown }Cu\IeC {\'a}l es la que proporciona mejores resultados? Muestre y com\IeC {\'e}ntelos. (Use como m\IeC {\'a}quina de referencia Ubuntu Server para la comparativa).}{10}{section.3}
+\contentsline {subsection}{\numberline {3.1}AB contra Ubuntu Server}{11}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}AB contra CentOS}{12}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}AB contra Windows Server}{13}{subsection.3.3}
+\contentsline {section}{\numberline {4}Instale y siga el tutorial en \href {http://jmeter.apache.org/usermanual/build-web-test-plan.html}{http://jmeter.apache.org/usermanual/build-web-test-plan.html} realizando capturas de pantalla y coment\IeC {\'a}ndolas. En vez de usar la web de jmeter, haga el experimento usando sus m\IeC {\'a}quinas virtuales \IeC {\textquestiondown }coincide con los resultados de ab?}{14}{section.4}
+\contentsline {subsection}{\numberline {4.1}Instalaci\IeC {\'o}n de JMeter}{14}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Tutorial de Apache JMeter}{15}{subsection.4.2}
+\contentsline {section}{\numberline {5}Programe un benchmark usando el lenguaje que desee. El benchmark debe incluir: 1) Objetivo del benchmark. 2) M\IeC {\'e}tricas (unidades, variables, puntuaciones, etc.). 3) Instrucciones para su uso. 4) Ejemplo de uso analizando los resultados.}{21}{section.5}
