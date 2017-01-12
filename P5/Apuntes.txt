@@ -1,0 +1,22 @@
+
+1. No es buena idea cambiar los parámetros de los ficheros dentro de estas carpetas
+   debido a que la podemos piciar. Por tanto debemos de utilizar la herramienta que
+   nos proporciona el sistema, que es _sysctl_ pero lo hace en tiempo de ejecución y
+   cada vez que reiniciamos los valores se pierden. Sin embargo si modificamos el fichero
+   /etc/sysctl.config los cambios los podemos hacer permanentes. /etc/sysctl.d
+
+2. sysctl --all
+
+3. Exportar - Importar lmao
+
+4. Referencia. Como mejorar php, mysql, iis...
+
+5. Herramientas administrativas -> Administrar IIS. Dentro del apartado de IIS tenemos
+   el apartado de compresión tanto dinámico como estático.
+
+   deshabilitar compresión y ver el numero content-length en el debugger/network de firefox
+   activarlo y comprobarlo de nuevo sobre la misma web. añadir a la web muchos megas de texto
+   y imagenes pesadas que veremos que se comprimen menos
+
+   curl -I -H 'Accept-Encoding:gzip,deflate' <ip-servidor>  Acepta ficheros comprimidos
+   curl -I <ip-servidor> No acepta ficheros comprimidos
