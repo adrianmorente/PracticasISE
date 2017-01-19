@@ -63,8 +63,37 @@ el valor del parámetro en cuestión. Veamos un ejemplo de los parámetros perte
 \end{figure}
 Para que los cambios persistan tras reiniciar la máquina, debemos aplicar la modificación a cada uno de los ficheros
 de parámetros. Sin embargo, por temas de seguridad, es mejor utilizar esta herramienta con algunas de sus múltiples
-opciones en lugar de acceder y modificar directamente dichos ficheros (ya que podemos ``tocar donde no debemos'').
-
+opciones en lugar de acceder y modificar directamente dichos ficheros (ya que podemos ``tocar donde no debemos''),
+cosa que podría derivar en algún fallo no deseado del sistema.
+Como vimos en clase, y como bien comenta el manual de \emph{sysctl}, la configuración perteneciente y valorable por
+esta herramienta se encuentra principalmente en el archivo /etc/sysctl.config, y colgando del directorio /etc/sysctl.d.
+Veamos una parte del contenido de dicho primer archivo:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.36]{sysctl-conf}
+	\caption{Parte del contenido del archivo de configuración /etc/sysctl.config. - Adrián Morente Gabaldón [19/01/2017]}
+	\label{figura5}
+\end{figure}
+Como podemos apreciar, no encontramos mucha información sobre qué es cada cosa, solo encontramos nombres de variables
+con sus correspondientes valores; todos ellos ordenados de forma clara y precisa según su ámbito. Por ejemplo, veamos
+uno de estos ámbitos que, personalmente, me ha llamado la atención, y es el relacionado con la \textbf{seguridad} del sistema:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.45]{sysctl-security}
+	\caption{Contenido del archivo de configuración /etc/sysctl.config relacionado con la seguridad del sistema. - Adrián
+	Morente Gabaldón [19/01/2017]}
+	\label{figura6}
+\end{figure}
+En este apartado, encontramos parámetros configurables que nos permitirían en cierto modo evitar algunos ataques a nuestro
+sistema, como pueden ser el bloqueo de redirecciones mediante el protocolo ICMP (que incluye herramientas como ping
+o traceroute, como hemos visto en la asignatura de \emph{Fundamentos de Redes}). Como bien explica la pequeña introducción
+en este apartado, estas son medidas contra el \emph{spoofing} (que en español se traduce por \emph{burla} o \emph{engaño},
+y en informática entendemos por ``falsificación de identidad'') y contra ataques \emph{Man In The Middle}, término que ya
+conocemos.\\
+Para terminar, cabe destacar que todos estos últimos parámetros están comentados, de forma que el sistema toma valores por
+defecto en caso de que no sean modificados aquí. Las instrucciones del archivo nos instan a no modificar parámetros si no
+sabemos lo que estamos haciendo. Además, ya sabemos que en caso de tener que modificarlos, debemos hacer copia de seguridad
+previa a su modificación.
 
 \section{¿Con qué opción se muestran todos los parámetros modificables en tiempo de ejecución? Elija dos parámetros
 y explique, en dos líneas, qué función tienen.}
