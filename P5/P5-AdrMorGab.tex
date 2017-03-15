@@ -80,9 +80,9 @@ Si leemos el manual de sysctl en la terminal, vemos rápidamente que la opción 
 \end{figure}
 Si ejecutamos \textbf{sysctl -a} obtenemos una extensa lista con todas las variables configurables. Exactamente, tantas como ficheros había en los subdirectorios de \emph{/proc/sys} vistos en el ejercicio anterior, lógicamente.
 	\subsection{Parámetro ``vm\_laptop\_mode''.}
-	Como vemos en la documentación oficial de \emph{kernel.org} \cite{kernel-laptop}, el \emph{laptop\_mode} (o ``modo portátil'') consiste en una subherramienta del kernel que permite a sistemas Unix ahorrar batería (iniciando automáticamente el sistema en este modo), a partir de intentar minimizar 	el número de rotaciones que realiza el disco duro. Está desactivado por defecto (a 0).
+	Como vemos en la documentación oficial de \emph{kernel.org} \cite{kernellaptop}, el \emph{laptop\_mode} (o ``modo portátil'') consiste en una subherramienta del kernel que permite a sistemas Unix ahorrar batería (iniciando automáticamente el sistema en este modo), a partir de intentar minimizar 	el número de rotaciones que realiza el disco duro. Está desactivado por defecto (a 0).
 	\subsection{Parámetro ``kernel\_sched\_nr\_migrate''.}
-	Según la documentación oficial de SUSE (conocidísima distribución de GNU/Linux) \cite{kernel-sched}, este parámetro se aplica directamente al número de tareas que pueden intercambiarse entre procesos durante una interrupción de software. El valor por defecto es 32. Aumentar este número aumenta el rendimiento en hebras con tareas largas, pero incrementa la latencia para tareas en tiempo real.
+	Según la documentación oficial de SUSE (conocidísima distribución de GNU/Linux) \cite{kernelsched}, este parámetro se aplica directamente al número de tareas que pueden intercambiarse entre procesos durante una interrupción de software. El valor por defecto es 32. Aumentar este número aumenta el rendimiento en hebras con tareas largas, pero incrementa la latencia para tareas en tiempo real.
 
 
 \section{[Windows Server] a) Realice una copia de seguridad del registro y restáurela, ilustre el proceso con capturas. b) Abra una ventana mostrando el editor del registro.}
@@ -154,7 +154,7 @@ Si seguimos el enlace a la web de Moodle proporcionado por el guión de la prác
 En dicha documentación oficial nos instan a realizar las siguientes acciones, en aras de que el servicio desempeñe un mejor rendimiento. Todas ellas son fácilmente realizables, ya que solo consisten en alterar ciertos valores del registro del sistema en Windows Server; y añadir o modificar algunas líneas de código a ciertos archivos de configuración en Linux.
 
 	\subsection{Mejora de rendimiento de Moodle en IIS}
-	Toda la configuración para mejorar el rendimiento en Windows, como ya hemos dicho, consiste en modificar algunos valores de registros. No debemos olvidar 	que antes de hacer esto, estamos ``obligados'' a realizar una copia de seguridad del registro, igual que en el ejercicio anterior, de forma que podamos 			\emph{volver atrás} si erramos en algo. Toda la configuración deberá ser aplicada al registro \emph{HKLM\textbackslash SYSTEM\textbackslash 					CurrentControlSet\textbackslash Services\textbackslash Inetinfo\textbackslash Parameters\textbackslash}, según nos indica Moodle \cite{moodle-iis}:
+	Toda la configuración para mejorar el rendimiento en Windows, como ya hemos dicho, consiste en modificar algunos valores de registros. No debemos olvidar 	que antes de hacer esto, estamos ``obligados'' a realizar una copia de seguridad del registro, igual que en el ejercicio anterior, de forma que podamos 			\emph{volver atrás} si erramos en algo. Toda la configuración deberá ser aplicada al registro \emph{HKLM\textbackslash SYSTEM\textbackslash 					CurrentControlSet\textbackslash Services\textbackslash Inetinfo\textbackslash Parameters\textbackslash}, según nos indica Moodle \cite{moodleiis}:
 	\begin{itemize}
 		\item Cambiar el parámetro \emph{ListenBackLog} de 2 a 5. Esto configura el tiempo de espera en conexión tras responder a una petición del cliente. Se aprovecha la misma conexión para enviar más datos y ahorrar tiempo de cierre+reapertura de conexión.
 		\item Cambiar la memoria caché que usará IIS por defecto al 50\% de la memoria total del sistema en el parámetro \emph{MemCacheSize}.
@@ -171,7 +171,7 @@ En dicha documentación oficial nos instan a realizar las siguientes acciones, e
 		\caption{Procedimiento para configurar los parámetros de Moodle sobre Apache en Linux. - Adrián Morente Gabaldón [19/01/2017]}
 		\label{figura13}
 	\end{figure}
-	Estas instrucciones nos instan a copiar el archivo \emph{config-dist.php} con el nombre \emph{config.php}, el cual configuraremos con el editor de texto que más nos guste, modificando en él los aspectos esenciales como el sitio web, aspectos de la base de datos, etc. Aquí será donde apliquemos los cambios para mejorar su rendimiento, de los que destacaremos los siguientes, según la primera guía que veíamos de Moodle \cite{moodle-apache}:
+	Estas instrucciones nos instan a copiar el archivo \emph{config-dist.php} con el nombre \emph{config.php}, el cual configuraremos con el editor de texto que más nos guste, modificando en él los aspectos esenciales como el sitio web, aspectos de la base de datos, etc. Aquí será donde apliquemos los cambios para mejorar su rendimiento, de los que destacaremos los siguientes, según la primera guía que veíamos de Moodle \cite{moodleapache}:
 	\begin{itemize}
 		\item Ajustaremos el número máximo de usuarios (parámetro \emph{MaxClients}) exactamente al 80\% de la memoria disponible del sistema. Si asignamos más memoria de la disponible realmente, Moodle comenzará a consumir memoria de intercambio del disco.
 		\item Para reducir la memoria consumida, reduciremos el número de módulos cargados por defecto en el archivo \emph{httpd.conf}, desactivando los que no necesitemos utilizar (u ofrecer).
@@ -180,7 +180,7 @@ En dicha documentación oficial nos instan a realizar las siguientes acciones, e
 		\item Si no estamos realizando ningún tipo de desarrollo en el servidor, pondremos el estado \emph{ExtendedStatus} en \emph{Off}, desactivando \emph{mod-info} y \emph{mod-status}.
 		\item Reduciremos el valor de \emph{TimeOut} a 30-60 segundos, de forma que se interrumpan las conexiones que excedan de este tiempo, liberando la carga del servidor.
 		\item Para reducir la carga de entrada/salida ajustaremos la directiva \emph{Options} con el contenido ``Options -Indexes FollowSymLinks'', de forma que el escaneado de directorios siga enlaces simbólicos en su búsqueda de ficheros.
-		\item Para reducir el tiempo de respuestas HTTP, ya sabemos que podemos comprimir el tamaño de dichas respuestas. Para ello, instalamos \emph{mod- deflate} \cite{mod-deflate} y lo activamos. A continuación, añadimos al fichero de configuración el fragmento de código aportado por la documentación de Moodle.org:
+		\item Para reducir el tiempo de respuestas HTTP, ya sabemos que podemos comprimir el tamaño de dichas respuestas. Para ello, instalamos \emph{mod-deflate} \cite{moddeflate} y lo activamos. A continuación, añadimos al fichero de configuración el fragmento de código aportado por la documentación de Moodle.org:
 		\begin{verbatim}
 		<ifModule mod_deflate.c>
   		    AddOutputFilterByType DEFLATE text/html text/plain text/xml
@@ -190,13 +190,87 @@ En dicha documentación oficial nos instan a realizar las siguientes acciones, e
 
 
 \section{Ajuste la compresión en el servidor y analice su comportamiento usando varios valores para el tamaño de archivo a partir del cual comprimir. Para comprobar que está comprimiendo puede usar el navegador o comandos como curl (see url) o lynx. Muestre capturas de pantalla de todo el proceso.}
+Como comentamos en clase durante la explicación de esta práctica, sabemos que podemos ahorrar mucho ancho de banda durante el envío de una respuesta HTTP en forma de HTML si comprimimos el contenido estático de esta, el cual puede cachearse en el cliente, lo que repercutirá también en un menor tiempo de carga para el solicitante. Sin embargo, el contenido dinámico (o cambiante) en ocasiones no tiene sentido comprimirlo, ya que constantemente sufre alteraciones y no sale rentable la compresión, ya que se pierde cómputo en compresión/descompresión de forma muy asidua. Sin embargo, incluso en las de este tipo existe contenido que podemos comprimir, como puede ser una sencilla página PHP que interactúe poco con el usuario.
+En el caso particular de IIS 7.5 en Windows Server 2008R2, podemos configurar estos parámetros de compresión para ambos casos, de dos formas, según vemos en su web oficial de soporte (technet.microsoft.com) \cite{compressioniis}. La primera forma consiste en seguir un típico proceso en Windows de hacer click en unas opciones hasta llegar a la ventana deseada, cambiar un valor, guardar y salir. Por otra parte, también aportan unas órdenes mediante línea de comandos para realizar la misma acción en menos tiempo. Sin embargo, además de que la segunda opción no está disponible en mi sistema, en la documentación de Microsoft no informan nada sobre cómo solucionarlo, así que seguiremos el proceso fácil de ventanas.
+Cabe destacar que el método de análisis de rendimiento antes y después de la compresión lo haré mediante la herramienta \emph{curl} desde la terminal de mi sistema anfitrión. Dicho sistema anfitrión, aunque durante todas las prácticas anteriores fue Windows 10, ahora es Antergos (versión de Arch Linux), con todas las máquinas virtuales sobre éste. Aclaro ésto para que no haya malentendidos.\\
+
+Para empezar, cambiaremos la página web ofrecida por IIS para fijar una con un gran volumen de texto, de forma que podamos apreciar bien la diferencia de tamaño con la compresión. En este caso, tendremos un documento HTML extremadamente sencillo, pero con miles de líneas de texto (hasta más de 200KiB). Ubicaremos este documento \emph{index.html} en el directorio \emph{c:/inetpub/wwwroot}, que es justo donde se ubica la web demostración de IIS.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{default-web}
+	\caption{Configuración base de la web de demostración. - Adrián Morente Gabaldón [20/01/2017}
+	\label{figura14}
+\end{figure}
+
+Una vez hecho esto, reiniciaremos el servicio para que se recargue la web ofrecida y, como vemos en la captura anterior, tenemos las dos direcciones IP correspondientes a la máquina. La primera, cuyo formato ya conocemos bien, se corresponde con la de la Red NAT, así que deberemos acceder a la otra dirección, que se corresponde con la interfaz de red \emph{Host Only}. Pero antes, veamos en su manual cómo tomaremos las medidas de rendimiento con curl:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{man-curl}
+	\caption{Opciones del manual de curl que usaremos. - Adrián Morente Gabaldón [20/01/2017}
+	\label{figura15}
+\end{figure}
+Con la opción -I decimos a la herramienta curl que descargue tan solo las cabeceras del fichero HTTP, mientras que con la opción -H establecemos las opciones que queremos aplicar durante la descarga, que en nuestro caso, será admitir la compresión. \\
+
+Ahora pasaremos a modificar la compresión del servidor que, en mi caso, ya venía activada por defecto. Para empezar, accedemos a la ventana principal de IIS:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{iis-primero}
+	\caption{Ventana principal de configuración de IIS. - Adrián Morente Gabaldón [20/01/2017}
+	\label{figura16}
+\end{figure}
+Acto seguido, pulsamos en la opción \emph{Compresión} y nos encontramos con la configuración:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{iis-segundo}
+	\caption{Opciones de compresión del servidor. - Adrián Morente Gabaldón [20/01/2017}
+	\label{figura17}
+\end{figure}
+Como vemos, ya estaban activadas por defecto en mi sistema. Para terminar, pasemos a comprobar la diferencia de tamaño del contenido HTTP, para la cual deshabilitamos la compresión del sistema, y por supuesto reiniciamos el servicio. He de mencionar que aunque las dos órdenes de terminal se muestran conjuntas, en la fecha y hora se puede apreciar el tiempo dedicado a rehabilitar la compresión y reiniciar de nuevo el servicio entre las dos medidas, que son las siguientes:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{curl-final}
+	\caption{Comparación de tamaño en Bytes con y sin compresión de las respuestas HTTP. - Adrián Morente Gabaldón [20/01/2017}
+	\label{figura18}
+\end{figure}
+En este caso, al ser una página web con una grandísima cantidad de texto, vemos como la compresión nos permite bajar de más de 200KiB de tamaño hasta poco más de 6KiB. En páginas con imágenes, el porcentaje de diferencia sería algo menor, pero por temas de tiempo me limitaré a la prueba con texto.
 
 
 \section{a) Usted parte de un SO con ciertos parámetros definidos en la instalación (Práctica 1), ya sabe instalar servicios (Práctica 2) y cómo monitorizarlos (Práctica 3) cuando los somete a cargas (Práctica 4). Al igual que ha visto cómo se puede mejorar un servidor web (Práctica 5 Sección 3.1), elija un servicio (el que usted quiera) y modifique un parámetro para mejorar su comportamiento. b) Monitorice el servicio antes y después de la modificación del parámetro aplicando cargas al sistema (antes y después) mostrando los resultados de la monitorización.}
+Para este caso particular, monitorizaremos un servicio perteneciente a Apache con \emph{ab}, benchmark que ya conocemos y sabemos cómo usar, así que podremos sacarle un buen partido a la hora de comparar rendimientos. Usaremos las mismas opciones que empleamos para la práctica anterior, que consistían en utilizar 5 hebras concurrentes que realizaban conjuntamente hasta 200.000 consultas al servidor de Apache.\\
 
+Para empezar, deberemos configurar el servicio Apache2, que como ya sabemos, establece sus archivos de configuración bajo el directorio \emph{/etc/apache2}, concretamente en el archivo \emph{apache2.conf}. En éste encontramos algunos de los parámetros que mencionábamos en la cuestión 4, obviamente en el apartado de Apache. Sin embargo, vemos que muchas de las mejoras propuestas ya vienen implementadas de serie por los desarrolladores de Apache.\\
+
+Sin embargo, si indagamos un poco dentro de este archivo y leemos con atención la documentación provista, podemos encontrar aspectos configurables interesantes como éstos:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{apache2-conf1}
+	\caption{Comparación de tamaño en Bytes con y sin compresión de las respuestas HTTP. - Adrián Morente Gabaldón [20/01/2017}
+	\label{figura19}
+\end{figure}
+
+\begin{itemize}
+	\item \emph{KeepAlive} permite o no configuraciones persistentes. Si ponemos su valor en \emph{Off}, se cerrarán las conexiones después de cada respuesta HTTP, en vez de esperar un cierto tiempo a otra solicitud del mismo cliente. Esto permite atender un mayor número de solicitudes más rápidamente, a costa de tener que reabrir una nueva conexión si el cliente anterior quisiera realizar otra solicitud. La modificaremos a Off.
+	\item \emph{MaxKeepAliveRequests} establece el número máximo de solicitudes durante una conexión persistente. Su valor por defecto es 100, pero podemos aumentarlo a una cifra mayor para aumentar su rendimiento. En este caso, la pondremos en 100.000.
+\end{itemize}
+
+Estos dos son los parámetros que he modificado en mi caso. Acto seguido, tras reiniciar el servicio con la orden \textbf{sudo service apache2 restart} habré ejecutado el benchmark de Apache de la forma arriba indicada ya conocida. Empezaremos modificando los dos parámetros y lanzando el benchmark, obteniendo lo siguiente:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{ab-primero}
+	\caption{Medición del benchmark de Apache con dos parámetros de configuración modificados. - Adrián Morente Gabaldón [20/01/2017}
+	\label{figura20}
+\end{figure}
+A continuación, devolvemos a ambos parámetros su valor inicial y volvemos a reiniciar el servicio. Lanzamos el benchmark una vez más y obtenemos lo siguiente:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{ab-segundo}
+	\caption{Medición del benchmark de Apache sin los dos parámetros de configuración modificados. - Adrián Morente Gabaldón [20/01/2017}
+	\label{figura21}
+\end{figure}
+
+Como podemos apreciar, la diferencia de tiempos no es muy grande a esta escala, ya que la máquina virtual tiene unas especificaciones bastante correctas para las solicitudes tan ligeras a las que se somete. Sin embargo, en un servidor mayor, con muchas aplicaciones y servicios más pesados, podríamos notar un mayor rendimiento en sus respuestas; logrando así mantener un desempeño del servidor más eficiente.
 
 
 \bibliography{citas}
 \bibliographystyle{plain}
-
 \end{document}
